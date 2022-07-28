@@ -1,5 +1,6 @@
 ﻿using Mini_project_API.Interface.IRepository;
 using Mini_project_API.Models;
+using System.Threading.Tasks;
 
 namespace Mini_project_API.Interface
 {
@@ -12,7 +13,7 @@ namespace Mini_project_API.Interface
         ITestQuestionRepository TestQuestionRepository { get; }
         ITestAccountRepository TestAccountRepository { get; }
         IAccountRepository AccountRepository { get; }
-        void SaveChanges();
+        Task<int> SaveChangesAsync();
        
     }
 }

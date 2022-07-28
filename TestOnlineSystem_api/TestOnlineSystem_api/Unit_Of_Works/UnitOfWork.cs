@@ -63,9 +63,9 @@ namespace Mini_project_API.Unit_Of_Works
             get { return accountRepository; }
         }
 
-        public void SaveChanges()
+        public async Task<int> SaveChangesAsync()
         {
-            _db.SaveChanges();
+            return await _db.SaveChangesAsync();
         }
 
         

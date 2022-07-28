@@ -31,9 +31,7 @@ namespace Mini_project_API.Service
 
             _unitOfWork.AccountRepository.Update(account);
 
-            _unitOfWork.SaveChanges();
-            
-            return true;
+            return await _unitOfWork.SaveChangesAsync() > 0;
         }
 
         public async Task<bool> BlockAccountAsync(int id)
@@ -47,14 +45,12 @@ namespace Mini_project_API.Service
 
             _unitOfWork.AccountRepository.Update(account);
 
-            _unitOfWork.SaveChanges();
-
-            return true;
+            return await _unitOfWork.SaveChangesAsync() > 0;
         }
 
         public async Task<IList<GetAccount>> GetAccountsAsync()
         {
-            var accounts = await _unitOfWork.AccountRepository.GetAllRoleNameAsync();
+            var accounts = await _unitOfWork.AccountRepository.GetAllWithRoleNameAsync();
             
             var lisiGetAccount = _mapper.Map<List<GetAccount>>(accounts);
             
@@ -64,8 +60,10 @@ namespace Mini_project_API.Service
         public async Task<GetReportTest> GetReportTestAsync(int testid)
         {
             var test = await _unitOfWork.TestRepository.GetByIdAsync(testid);
+          
             if(test == null)
                 return null;
+            
             var report = _mapper.Map<GetReportTest>(test);
 
             var listAccountReport = await _unitOfWork.TestAccountRepository

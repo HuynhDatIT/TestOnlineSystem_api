@@ -3,6 +3,7 @@ using Mini_project_API.Interface;
 using Mini_project_API.Modelconfig;
 using Mini_project_API.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace Mini_project_API.Data
 {
@@ -20,6 +21,11 @@ namespace Mini_project_API.Data
         public DbSet<Test> Tests { get; set; }
         public DbSet<TestAccount> TestAccounts { get; set; }
         public DbSet<TestQuestion> TestQuestions { get; set; }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await base.SaveChangesAsync();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,7 +51,6 @@ namespace Mini_project_API.Data
 
             #endregion
             modelBuilder.SeedAllDataNew();
-
         }
     }
 }

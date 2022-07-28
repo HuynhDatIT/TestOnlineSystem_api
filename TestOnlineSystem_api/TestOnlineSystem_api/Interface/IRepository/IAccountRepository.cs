@@ -10,7 +10,7 @@ namespace Mini_project_API.Interface.IRepository
         Task<string> GetAccountFullNameByIdAsync(int id);
         Account Authentication(LoginViewModel loginViewModel);
 
-        Task<IList<Account>> GetAllRoleNameAsync();
+        Task<IList<Account>> GetAllWithRoleNameAsync();
 
        
     }

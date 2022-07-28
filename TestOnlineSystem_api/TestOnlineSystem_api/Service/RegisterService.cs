@@ -27,7 +27,7 @@ namespace Mini_project_API.Service
             
             await _unitOfWork.AccountRepository.AddAsync(account);
             
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 }

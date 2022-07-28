@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Mini_project_API.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace Mini_project_API.Interface
 {
@@ -16,6 +17,6 @@ namespace Mini_project_API.Interface
         DbSet<TestQuestion> TestQuestions { get; set; }
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
-        int SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }

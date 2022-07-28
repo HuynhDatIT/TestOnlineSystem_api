@@ -35,7 +35,7 @@ namespace Mini_project_API.Repository
             return fullname;
         }
 
-        public async Task<IList<Account>> GetAllRoleNameAsync()
+        public async Task<IList<Account>> GetAllWithRoleNameAsync()
         {
             var accounts = await _db.Accounts.Include(a => a.Role).ToListAsync();
             return accounts;

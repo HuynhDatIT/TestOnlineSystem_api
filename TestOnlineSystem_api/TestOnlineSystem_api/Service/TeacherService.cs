@@ -27,7 +27,7 @@ namespace Mini_project_API.Service
             
             await _unitOfWork.QuestionRepository.AddAsync(question);
             
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
 
             var answers = _mapper.Map<IList<Answer>>(questionAnswer.PostAnswers);
 
@@ -40,7 +40,7 @@ namespace Mini_project_API.Service
             
             await _unitOfWork.AnswerRepository.AddListAsync(answers);
             
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task CreateTestAsync(CreateTest createtest)
@@ -49,7 +49,7 @@ namespace Mini_project_API.Service
             
             await _unitOfWork.TestRepository.AddAsync(test);
 
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
             
             var testId = await _unitOfWork.TestRepository.GetLastTestIdAsync();
             
@@ -68,7 +68,7 @@ namespace Mini_project_API.Service
             
             await _unitOfWork.TestQuestionRepository.AddListAsync(listtestquestion);
             
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task CreateTestAccountAsync(CreateTestAccount createtestaccount)
@@ -77,7 +77,7 @@ namespace Mini_project_API.Service
            
             await _unitOfWork.TestAccountRepository.AddAsync(test);
             
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public async Task<GetReportTest> GetReportTestAsync(int testid)
