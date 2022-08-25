@@ -6,6 +6,5 @@ namespace Mini_project_API.Interface.IRepository
 {
     public interface IQuestionRepository : IGenericRepositoryCRUD<Question>
     {
-        Task<int> GetLastQuestionIdAsync();
     }
 }

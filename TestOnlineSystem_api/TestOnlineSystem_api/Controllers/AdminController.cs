@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Mini_project_API.Controllers
 {
-    [AuthorizeFilter(role: "admin")]
+   // [AuthorizeFilter(role: "admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class AdminController : ControllerBase

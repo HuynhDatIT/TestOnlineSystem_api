@@ -22,6 +22,7 @@ namespace TestOnlineSystem_api_UnitTest
         protected readonly Mock<IUnitOfWork> _unitOfWorkMock;
         protected readonly Mock<IElearningDbContext> _learningDbContextMock;
         protected readonly Mock<IAdminService> _adminServiceMock;
+        protected readonly Mock<IStudentService> _studentServiceMock;
 
         public SetupTest()
         {
@@ -37,9 +38,10 @@ namespace TestOnlineSystem_api_UnitTest
             _mapper = mapper.CreateMapper();
             _fixture = new Fixture();
             _unitOfWorkMock = new Mock<IUnitOfWork>();
-            _adminServiceMock = new Mock<IAdminService>();
             _learningDbContextMock = new Mock<IElearningDbContext>();
-           
+            _adminServiceMock = new Mock<IAdminService>();
+            _studentServiceMock = new Mock<IStudentService>();
+
         }
     }
 }

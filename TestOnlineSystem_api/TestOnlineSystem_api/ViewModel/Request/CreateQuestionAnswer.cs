@@ -8,7 +8,7 @@ namespace Mini_project_API.ViewModel.Request
         public string ContentQuestion { get; set; }
         public bool IsOnlyAnswer { get; set; }
         public string PathImage { get; set; }
-        public ICollection<PostAnswer> PostAnswers { get; set; }
+        public ICollection<PostAnswer> Answers { get; set; }
     }
 
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Mini_project_API.Controllers
 {
-    [AuthorizeFilter(role: "teacher")]
+   // [AuthorizeFilter(role: "teacher")]
     [Route("api/[controller]")]
     [ApiController]
     public class TeacherController : ControllerBase

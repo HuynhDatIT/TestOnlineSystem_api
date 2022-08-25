@@ -20,15 +20,7 @@ namespace Mini_project_API.Service
 
         public async Task<GetTest> GetTestAsync(int id)
         {
-            /* Step:
-             * 1: get Test theo id
-             * 2: get questionId của test
-             * 3: get question by id
-             * 4: get answers theo questionId
-             * 5: add listAnswer vào từng question
-             * 6: add listQuestion vào Test
-             */
-            var test = await _unitOfWork.TestRepository.GetByIdAsync(id);
+            var test = await _unitOfWork.TestRepository.GetTestForReportAsync(id);
             
             if(test == null)
                 return null;

@@ -6,7 +6,7 @@ namespace Mini_project_API.Interface.IRepository
 {
     public interface ITestRepository : IGenericRepositoryCRUD<Test>
     {
-        Task<int> GetLastTestIdAsync();
         Task<string> GetTitleTestByIdAsync(int id);
+        Task<Test> GetTestForReportAsync(int testId);
     }
 }

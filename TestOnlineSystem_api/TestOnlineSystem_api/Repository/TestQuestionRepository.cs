@@ -13,15 +13,9 @@ namespace Mini_project_API.Repository
         public TestQuestionRepository(IElearningDbContext db) : base(db)
         {
         }
-
-        public async Task AddListAsync(IList<TestQuestion> testquestion)
-        {
-           await _db.TestQuestions.AddRangeAsync(testquestion);
-        }
-
         public async Task<IList<int>> GetQuestionIdByTestIdAsync(int testId)
         {
-            var listQuestionId = await _db.TestQuestions
+            var listQuestionId = await _dbSet
                                     .Where(x => x.TestId == testId)
                                     .Select(x => x.QuestionId)
                                     .ToListAsync();

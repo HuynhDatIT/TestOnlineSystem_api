@@ -10,32 +10,47 @@ namespace Mini_project_API.Repository
 {
     public class GenericRepositoryCRUD<T> : IGenericRepositoryCRUD<T> where T : class
     {
-        protected readonly IElearningDbContext _db;
+        protected readonly DbSet<T> _dbSet;
         public GenericRepositoryCRUD(IElearningDbContext db)
         {
-            _db = db;
+            _dbSet = db.Set<T>();
         }
-        public async Task<IList<T>> GetAllAsync()
+        public virtual async Task<IList<T>> GetAllAsync()
         {
-            var listItem = await _db.Set<T>().ToListAsync();
-            
+            var listItem = await _dbSet.ToListAsync();
+           
             return listItem;
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public virtual async Task<T> GetByIdAsync(int id)
         {
-            var itemT = await _db.Set<T>().FindAsync(id); 
+            var itemT = await _dbSet.FindAsync(id); 
         
             return itemT;
         }
-        public async Task AddAsync(T obj)
+        public virtual async Task AddAsync(T obj)
         {
-           await _db.Set<T>().AddAsync(obj);
+           await _dbSet.AddAsync(obj);
         }
 
-        public void Update(T obj)
+        public virtual void Update(T obj)
         {
-            _db.Set<T>().Update(obj);
+            _dbSet.Update(obj);
+        }
+
+        public virtual void Remove(T obj)
+        {
+            _dbSet.Remove(obj);
+        }
+
+        public virtual void RemoveRange(ICollection<T> objs)
+        {
+           _dbSet.RemoveRange(objs);
+        }
+
+        public virtual async Task AddRangeAsync(ICollection<T> objs)
+        {
+            await _dbSet.AddRangeAsync(objs);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Mini_project_API.Repository
         public Account Authentication(LoginViewModel loginViewModel)
         {
 
-            var result = _db.Accounts.Include(a => a.Role)
+            var result = _dbSet.Include(a => a.Role)
                                         .Where(a => a.Username == loginViewModel.Username
                                             && a.Password == loginViewModel.Password.HashMD5())
                                                 .FirstOrDefault();
@@ -29,7 +29,7 @@ namespace Mini_project_API.Repository
 
         public async Task<string> GetAccountFullNameByIdAsync(int id)
         {
-            var fullname = await _db.Accounts
+            var fullname = await _dbSet
                             .Where(a => a.Id == id)
                                 .Select(a => a.Fullname).FirstOrDefaultAsync();
             return fullname;
@@ -37,7 +37,7 @@ namespace Mini_project_API.Repository
 
         public async Task<IList<Account>> GetAllWithRoleNameAsync()
         {
-            var accounts = await _db.Accounts.Include(a => a.Role).ToListAsync();
+            var accounts = await _dbSet.Include(a => a.Role).ToListAsync();
             return accounts;
         }
     }

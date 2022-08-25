@@ -14,14 +14,9 @@ namespace Mini_project_API.Repository
         {
         }
 
-        public async Task AddListAsync(IList<Answer> answers)
-        {
-           await _db.Answers.AddRangeAsync(answers);
-        }
-
         public async Task<IList<Answer>> GetAnswersByQuestionIdAsync(int id)
         {
-            var listAnswer = await _db.Answers
+            var listAnswer = await _dbSet
                                 .Where(x => x.QuestionId == id).ToListAsync();
             return listAnswer;
         }

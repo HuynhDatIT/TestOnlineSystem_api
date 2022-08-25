@@ -15,7 +15,6 @@ namespace TestOnlineSystem_api_UnitTest.ServiceTest
     public class AdminServiceTest : SetupTest
     {
         private readonly AdminService _adminService;
-
         public AdminServiceTest()
         {
             _adminService = new AdminService(_unitOfWorkMock.Object, _mapper);
@@ -245,9 +244,9 @@ namespace TestOnlineSystem_api_UnitTest.ServiceTest
             var mockAccountsReport = _fixture.Build<GetAccountReport>()
                                             .CreateMany(10).ToList();
 
-            _unitOfWorkMock.Setup(x => x.TestAccountRepository
-                                        .GetAccountsByTestIdAsync(id))
-                                        .ReturnsAsync(mockAccountsReport);
+            //_unitOfWorkMock.Setup(x => x.TestAccountRepository
+            //                            .GetAccountsByTestIdAsync(id))
+            //                            .ReturnsAsync(mockAccountsReport);
 
             report.AccountReports = mockAccountsReport;
 
@@ -276,9 +275,9 @@ namespace TestOnlineSystem_api_UnitTest.ServiceTest
             var mockAccountsReport = _fixture.Build<GetAccountReport>()
                                             .CreateMany(0).ToList();
 
-            _unitOfWorkMock.Setup(x => x.TestAccountRepository
-                                        .GetAccountsByTestIdAsync(id))
-                                        .ReturnsAsync(mockAccountsReport);
+            //_unitOfWorkMock.Setup(x => x.TestAccountRepository
+            //                            .GetAccountsByTestIdAsync(id))
+            //                            .ReturnsAsync(mockAccountsReport);
 
             report.AccountReports = mockAccountsReport;
 

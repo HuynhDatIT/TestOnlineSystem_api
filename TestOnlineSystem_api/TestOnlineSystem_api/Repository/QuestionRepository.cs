@@ -13,15 +13,5 @@ namespace Mini_project_API.Repository
         public QuestionRepository(IElearningDbContext db): base(db)
         {
         }
-
-        public async Task<int> GetLastQuestionIdAsync()
-        {
-            var questionId = await _db.Questions
-                                    .Select(q => q.Id)
-                                        .LastOrDefaultAsync();
-            return questionId;
-        }
-
-       
     }
 }

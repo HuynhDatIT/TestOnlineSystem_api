@@ -14,20 +14,26 @@ namespace Mini_project_API.Repository
         {
         }
 
-        public async Task<int> GetLastTestIdAsync()
-        {
-           var testLastId = await _db.Tests
-                                    .Select(t => t.Id)
-                                        .LastOrDefaultAsync();
-            return testLastId;
-        }
-
         public async Task<string> GetTitleTestByIdAsync(int id)
         {
-            var title = await _db.Tests
+            var title = await _dbSet
                             .Where(t => t.Id == id)
                                 .Select(t => t.Title).FirstOrDefaultAsync();
             return title;
+        }
+        public async Task<Test> GetTestForReportAsync(int testId)
+        {
+            return await _dbSet.Where(x => x.Id == testId)
+                               .Include(x => x.TestAccounts)
+                               .ThenInclude(x => x.Account).FirstOrDefaultAsync();
+        }
+        public async Task<Test> GetTestAsync(int testId)
+        {
+            return await _dbSet.Where(x => x.Id == testId)
+                               .Include(x => x.TestQuestions)
+                               .ThenInclude(x => x.Question)
+                               .ThenInclude(x => x.Answers)
+                               .FirstOrDefaultAsync();
         }
     }
 }
